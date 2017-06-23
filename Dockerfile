@@ -15,7 +15,7 @@ ENV UID 1100
 ENV GID 1100
 ENV USER haproxy
 ENV GROUP haproxy
-
+ADD https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip /
 # see http://sources.debian.net/src/haproxy/jessie/debian/rules/ for some helpful navigation of the possible "make" arguments
 RUN set -x \
         \
@@ -38,7 +38,6 @@ RUN set -x \
         && systemctl enable rsyslog \
         \
         && wget -O haproxy.tar.gz "http://www.haproxy.org/download/${HAPROXY_MAJOR}/src/haproxy-${HAPROXY_VERSION}.tar.gz" \
-        && wget https://releases.hashicorp.com/consul-template/${CONSUL_TEMPLATE_VERSION}/consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip \
         && unzip /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip \
         && mv /consul-template /usr/local/bin/consul-template \
         && rm -rf /consul-template_${CONSUL_TEMPLATE_VERSION}_linux_amd64.zip \
