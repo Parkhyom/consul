@@ -19,13 +19,13 @@ docker images docker build -t haproxy_consul .
 	
 docker run 参数如下
 
-docker run -d --net host --name consul-haproxy --restart=always \\
+docker run -d --net host --name consul-haproxy --restart=always \
 
-	--log-opt max-file=10 --log-opt max-size=20k \\
+	--log-opt max-file=10 --log-opt max-size=20k \
 	
-	-v /applog/supervisor:/applog/supervisor:rw \\
+	-v /applog/supervisor:/applog/supervisor:rw \
 	
-	-v /applog/consul-template:/applog/consul-template:rw \\
+	-v /applog/consul-template:/applog/consul-template:rw \
 	
 	haproxy_consul
  
