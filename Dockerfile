@@ -33,6 +33,7 @@ RUN set -x \
                 unzip \
                 rsyslog \
                 curl \
+                sysv-rc-conf \
         ' \
         && apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/* \
         && systemctl enable rsyslog \
@@ -64,15 +65,17 @@ RUN set -x \
         && mkdir -p /etc/haproxy \
         && mkdir -p /haproxy \
         && mkdir -p /etc/consul-template \
+        && mkdir -p /applog/consul-template \
+        && mkdir -p /applog/supervisor \
         && cp -R /usr/src/haproxy/examples/errorfiles /etc/haproxy/errors \
         && rm -rf /usr/src/haproxy \
         \
-        && apt-get purge -y --auto-remove $buildDeps
-
+        && apt-get purge -y --auto-remove gcc libc6-dev liblua5.3-dev libpcre3-dev libssl-dev make 
 WORKDIR /etc/consul-template
-COPY supervisor-consul-tempalte.conf /etc/supervisor/conf.d/
+COPY supervisor-consul-template.conf.bak /etc/supervisor/conf.d/
 COPY haproxy.ctmpl.bak /etc/consul-template/
 COPY reload.sh /haproxy/
+COPY tmpl.json /etc/consul-template/
 COPY start.sh /haproxy/
 COPY haproxy.cfg /etc/haproxy/
 COPY docker-entrypoint.sh /
