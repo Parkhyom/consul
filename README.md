@@ -14,5 +14,5 @@ docker run -d --net host --name consul-haproxy --restart=always \
 	--log-opt max-file=10 --log-opt max-size=20k \
 	-v /applog/supervisor:/applog/supervisor:rw \
 	-v /applog/consul-template:/applog/consul-template:rw \
-haproxy_consul
+	haproxy_consul
  
