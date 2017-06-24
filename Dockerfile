@@ -66,7 +66,7 @@ RUN set -x \
         && mkdir -p /haproxy \
         && mkdir -p /etc/consul-template \
         && mkdir -p /applog/consul-template \
-        && mkdir -p /applog/supervisor \
+        && mkdir -p /applog/supervisor/supervisor \
         && cp -R /usr/src/haproxy/examples/errorfiles /etc/haproxy/errors \
         && rm -rf /usr/src/haproxy \
         \
