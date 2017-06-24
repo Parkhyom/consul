@@ -4,7 +4,7 @@ set -e
 
 SUPERVISOR_HTTP=${SUPERVISOR_HTTP:-*}
 SUPERVISOR_CONFIG=${SUEPRVISOR_CONFG:-/etc/supervisor/conf.d}
-sed -i "s/\/var\/log/\/applog\/supervisor/g" /etc/supervisor/supervisord.conf 
+sed -i "s/\/var\/log/\/applog/g" /etc/supervisor/supervisord.conf 
 sed -e "s/127.0.0.1/${SUPERVISOR_HTTP}/g" /etc/supervisor/conf.d/supervisor-consul-template.conf.bak > ${SUPERVISOR_CONFIG}/supervisor-consul-template.conf
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
