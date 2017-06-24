@@ -5,7 +5,7 @@ Service discovery for mesos&amp;marathon architecture
 
 你可以利用Dockerfile制作一个镜像
 
-docker images docker build -t haproxy_consul . 
+docker build -t haproxy_consul . 
 
 对制作完成的镜像，使用注意以下几点 
 
