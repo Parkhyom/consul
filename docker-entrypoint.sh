@@ -1,8 +1,7 @@
 #!/bin/sh
 
 set -e
-echo $1
-echo $2
+
 SUPERVISOR_HTTP=${SUPERVISOR_HTTP:-*}
 SUPERVISOR_CONFIG=${SUEPRVISOR_CONFG:-/etc/supervisor/conf.d}
 sed -i "s/\/var\/log/\/applog\/supervisor/g" /etc/supervisor/supervisord.conf 
