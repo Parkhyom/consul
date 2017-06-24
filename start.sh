@@ -18,8 +18,8 @@ LOG_LEVEL=${LOG_LEVEL:-debug}
 #/usr/sbin/haproxy -f /etc/haproxy/haproxy.cfg -p /run/haproxy.pid
 #/usr/sbin/haproxy -D -p /var/run/haproxy.pid  -f /etc/haproxy/haproxy.cfg -sf $(cat /var/run/haproxy.pid) || true
 #start consul-template as follow
-sed -e "s/HAPROXY_PROXY_PORT/${HAPROXY_PROXY_PORT}/g;s/HAPROXY_STATUS_PORT/${HAPROXY_STATUS_PORT}/g" /etc/consul-tempalte/haproxy.ctmpl.bak > /etc/consul-template/haproxy.ctmpl
+sed -e "s/HAPROXY_PROXY_PORT/${HAPROXY_PROXY_PORT}/g;s/HAPROXY_STATUS_PORT/${HAPROXY_STATUS_PORT}/g" /etc/consul-template/haproxy.ctmpl.bak > /etc/consul-template/haproxy.ctmpl
 /usr/local/bin/consul-template -consul $CONSUL_SERVER:$CONSUL_PORT \
     -config $TEMPLATE \
     -wait 2s:10s \
-    -log-level "$LOG_LEVEL" >/dev/null 2&>1
+    -log-level "$LOG_LEVEL" > /applog/consul-template/consul-template.log 2>&1 
