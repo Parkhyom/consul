@@ -1,0 +1,6 @@
+consul = "127.0.0.1:8500"
+template {
+  source = "/etc/consul-template/haproxy.ctmpl"
+  destination = "/etc/haproxy/haproxy.cfg"
+  command = "/haproxy/reload.sh"
+}
